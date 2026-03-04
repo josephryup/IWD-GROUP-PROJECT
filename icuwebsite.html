@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICU Zambia | Information and Communication University</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Custom CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #003366;      /* Deep Blue - Trust & Knowledge */
+            --secondary: #FF6600;    /* Orange - Innovation & Energy */
+            --accent: #00A651;       /* Green - Growth & Future */
+            --light: #F8F9FA;
+            --dark: #212529;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Loading Screen */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), #001a33);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+        
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .book-loader {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            margin: 0 auto 20px;
+            perspective: 200px;
+        }
+        
+        .book-page {
+            width: 40px;
+            height: 60px;
+            background: var(--secondary);
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            transform-origin: left center;
+            animation: flipBook 2s infinite;
+            border-radius: 3px;
+        }
+        
+        .book-page:nth-child(2) {
+            animation-delay: 0.3s;
+            background: #ff8533;
+        }
+        
+        .book-page:nth-child(3) {
+            animation-delay: 0.6s;
+            background: #ffaa66;
+        }
+        
+        @keyframes flipBook {
+            0% { transform: rotateY(0deg); }
+            50% { transform: rotateY(-180deg); }
+            100% { transform: rotateY(-360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            transition: var(--transition);
+            box-shadow: 0 2px 20px rgba(0,51,102,0.1);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(0,51,102,0.98);
+        }
+        
+        .navbar.scrolled .nav-link,
+        .navbar.scrolled .navbar-brand {
+            color: white !important;
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-brand i {
+            color: var(--secondary);
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark) !important;
+            margin: 0 10px;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,51,102,0.9), rgba(0,26,51,0.95)), 
+                        url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=2086&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><circle cx="50" cy="50" r="40" stroke="%23FF6600" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="30" stroke="%23FF6600" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="20" stroke="%23FF6600" stroke-width="2" fill="none"/></svg>');
+            background-size: 200px 200px;
+            animation: rotate 60s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-content {
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero .subtitle {
+            font-size: 2rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease 0.1s;
+            animation-fill-mode: both;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-buttons {
+            animation: fadeInUp 1s ease 0.3s;
+            animation-fill-mode: both;
+        }
+        
+        .btn-custom {
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-custom::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: -1;
+        }
+        
+        .btn-custom:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-primary-custom {
+            background: var(--secondary);
+            color: var(--primary);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-primary-custom:hover {
+            background: transparent;
+            color: white;
+        }
+        
+        .btn-outline-custom {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Floating Elements */
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        
+        .icon-1 {
+            top: 20%;
+            left: 10%;
+            animation: float 8s infinite;
+        }
+        
+        .icon-2 {
+            bottom: 30%;
+            right: 15%;
+            animation: float 10s infinite reverse;
+        }
+        
+        .icon-3 {
+            top: 40%;
+            right: 20%;
+            animation: float 12s infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        /* Section Padding */
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-top: 15px;
+        }
+        
+        /* About Section */
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,51,102,0.2);
+        }
+        
+        .about-image img {
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .establishment-badge {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: var(--secondary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .establishment-badge .year {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
+        .establishment-badge .text {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-box {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .stat-box .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+        
+        .stat-box .label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        /* Programs Section */
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,51,102,0.1);
+            transition: var(--transition);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .program-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,51,102,0.2);
+        }
+        
+        .program-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), #004c99);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .program-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .program-level {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+        
+        /* Features Section */
+        .features-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,51,102,0.1);
+        }
+        
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), #004c99);
+            color: white;
+            font-size: 2.5rem;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            transition: var(--transition);
+        }
+        
+        .feature-item:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: var(--secondary);
+        }
+        
+        /* Statistics Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary), #001a33);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Courses Grid */
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,51,102,0.1);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,102,0,0.2);
+        }
+        
+        .course-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .course-card:hover .course-image img {
+            transform: scale(1.1);
+        }
+        
+        .course-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        .course-content {
+            padding: 25px;
+        }
+        
+        .course-content h5 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .course-meta {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .course-meta i {
+            color: var(--secondary);
+            margin-right: 5px;
+        }
+        
+        /* Faculty Section */
+        .faculty-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,51,102,0.1);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,102,0,0.2);
+        }
+        
+        .faculty-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .faculty-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .faculty-card:hover .faculty-image img {
+            transform: scale(1.1);
+        }
+        
+        .faculty-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .faculty-info h5 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .faculty-info .position {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .faculty-info .qualification {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Admissions Section */
+        .admissions-section {
+            background: linear-gradient(135deg, var(--primary), #001a33);
+            color: white;
+        }
+        
+        .admission-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            height: 100%;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+        
+        .admission-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .admission-card h4 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .admission-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .admission-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .admission-list li i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .fee-highlight {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 20px 0;
+        }
+        
+        /* Campus Life */
+        .campus-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        
+        .campus-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .campus-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .campus-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,51,102,0.9), transparent);
+            color: white;
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .campus-card:hover .campus-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,51,102,0.1);
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 8rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .author-info h6 {
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .author-info p {
+            color: #666;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* News & Events */
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,51,102,0.1);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,102,0,0.2);
+        }
+        
+        .news-date {
+            background: var(--secondary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .news-date .day {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
+        .news-date .month {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-content h5 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,51,102,0.1);
+            height: 100%;
+            transition: var(--transition);
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255,102,0,0.2);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,51,102,0.1);
+        }
+        
+        .form-control, .form-select {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.2rem rgba(255,102,0,0.25);
+        }
+        
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            width: 100%;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .btn-submit:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,102,0,0.3);
+        }
+        
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,51,102,0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+        
+        .footer h5 {
+            color: var(--secondary);
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .footer-contact i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #ccc;
+        }
+        
+        /* Back to Top */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            z-index: 999;
+        }
+        
+        #backToTop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,102,0,0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .establishment-badge {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 15px;
+            }
+            
+            .establishment-badge .year {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="book-loader">
+                <div class="book-page"></div>
+                <div class="book-page"></div>
+                <div class="book-page"></div>
+            </div>
+            <h2>ICU Zambia</h2>
+            <p>Information and Communication University</p>
+            <p class="mt-3">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-university"></i>
+                ICU Zambia
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#programs">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#admissions">Admissions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faculty">Faculty</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#campus">Campus</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-icon icon-1"><i class="fas fa-laptop-code"></i></div>
+        <div class="floating-icon icon-2"><i class="fas fa-network-wired"></i></div>
+        <div class="floating-icon icon-3"><i class="fas fa-microchip"></i></div>
+        
+        <div class="container hero-content">
+            <h1 data-aos="fade-up">ICU Zambia</h1>
+            <div class="subtitle" data-aos="fade-up" data-aos-delay="100">Information and Communication University</div>
+            <p data-aos="fade-up" data-aos-delay="200">Shaping the Future Through Technology & Innovation Since 2009</p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                <a href="#programs" class="btn btn-primary-custom btn-custom me-3">Our Programs</a>
+                <a href="#contact" class="btn btn-outline-custom btn-custom">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>About ICU Zambia</h2>
+                <p>Excellence in Information and Communication Education</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=2086&q=80" alt="ICU Zambia Campus" class="img-fluid">
+                        <div class="establishment-badge">
+                            <div class="year">2009</div>
+                            <div class="text">Established</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h3 class="mb-4" style="color: var(--primary);">Leading the Digital Revolution in Zambia</h3>
+                    <p class="lead">Information and Communication University (ICU Zambia) is a private higher education institution located in Lusaka, Zambia [citation:1].</p>
+                    <p>Founded in 2009, ICU Zambia is officially recognized by the Ministry of Education of Zambia and the Higher Education Authority (HEA) [citation:1]. We are dedicated to providing quality education in information and communication technologies, preparing students for the digital economy.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <div class="number">15+</div>
+                            <div class="label">Degree Programs</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="number">500+</div>
+                            <div class="label">Students</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="number">40+</div>
+                            <div class="label">Faculty</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="#programs" class="btn btn-primary-custom btn-custom">Explore Programs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section section-padding">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Why Choose ICU Zambia?</h2>
+                <p>Excellence in Education, Innovation in Technology</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h5>Accredited</h5>
+                        <p>Officially recognized by the Ministry of Education, Zambia and HEA [citation:1]</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h5>Modern Labs</h5>
+                        <p>State-of-the-art computer and networking laboratories</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h5>Expert Faculty</h5>
+                        <p>Industry professionals and experienced academics</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h5>Industry Links</h5>
+                        <p>Strong partnerships with tech companies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-item">
+                        <div class="stat-number" id="stat-year">15+</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-item">
+                        <div class="stat-number" id="stat-programs">25+</div>
+                        <div class="stat-label">Academic Programs</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-item">
+                        <div class="stat-number" id="stat-students">2000+</div>
+                        <div class="stat-label">Alumni</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-item">
+                        <div class="stat-number" id="stat-grad">95%</div>
+                        <div class="stat-label">Employment Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="section-padding">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Academic Programs</h2>
+                <p>Comprehensive degrees in Information and Communication fields</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="flip-left" data-aos-delay="100">
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>Computer Science</h4>
+                        <p>Bachelor's degree in Computer Science focusing on programming, algorithms, and software development.</p>
+                        <span class="program-level">Undergraduate</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="flip-left" data-aos-delay="200">
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h4>Information Technology</h4>
+                        <p>Bachelor's degree in IT covering networking, systems administration, and cybersecurity.</p>
+                        <span class="program-level">Undergraduate</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="flip-left" data-aos-delay="300">
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Business Information Systems</h4>
+                        <p>Integration of business management with information technology solutions.</p>
+                        <span class="program-level">Undergraduate</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="flip-left" data-aos-delay="400">
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Cybersecurity</h4>
+                        <p>Specialized program in information security, ethical hacking, and data protection.</p>
+                        <span class="program-level">Postgraduate</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="flip-left" data-aos-delay="500">
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Data Science</h4>
+                        <p>Master's program in data analytics, machine learning, and big data technologies.</p>
+                        <span class="program-level">Postgraduate</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="flip-left" data-aos-delay="600">
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Software Engineering</h4>
+                        <p>Advanced diploma in mobile and web application development.</p>
+                        <span class="program-level">Diploma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Showcase -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Popular Courses</h2>
+                <p>Explore our most sought-after programs</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Programming">
+                            <span class="course-category">Popular</span>
+                        </div>
+                        <div class="course-content">
+                            <h5>Web Development</h5>
+                            <p>Full-stack web development with modern frameworks</p>
+                            <div class="course-meta">
+                                <span><i class="fas fa-clock"></i> 12 weeks</span>
+                                <span><i class="fas fa-users"></i> 30 seats</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2034&q=80" alt="Networking">
+                            <span class="course-category">New</span>
+                        </div>
+                        <div class="course-content">
+                            <h5>Network Administration</h5>
+                            <p>CCNA certification preparation course</p>
+                            <div class="course-meta">
+                                <span><i class="fas fa-clock"></i> 16 weeks</span>
+                                <span><i class="fas fa-users"></i> 25 seats</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Data Science">
+                            <span class="course-category">Featured</span>
+                        </div>
+                        <div class="course-content">
+                            <h5>Data Analytics</h5>
+                            <p>Python for data analysis and visualization</p>
+                            <div class="course-meta">
+                                <span><i class="fas fa-clock"></i> 10 weeks</span>
+                                <span><i class="fas fa-users"></i> 20 seats</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section id="admissions" class="admissions-section section-padding">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 style="color: white;">Admissions</h2>
+                <p style="color: rgba(255,255,255,0.9);">Your journey to a tech career starts here</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                    <div class="admission-card">
+                        <h4>Requirements</h4>
+                        <ul class="admission-list">
+                            <li><i class="fas fa-check-circle"></i> Grade 12 Certificate with 5 credits</li>
+                            <li><i class="fas fa-check-circle"></i> Mathematics and English required</li>
+                            <li><i class="fas fa-check-circle"></i> Science subject recommended</li>
+                            <li><i class="fas fa-check-circle"></i> Application form completed</li>
+                            <li><i class="fas fa-check-circle"></i> Passport photos (2)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="admission-card">
+                        <h4>Tuition & Fees</h4>
+                        <div class="fee-highlight">K 8,500</div>
+                        <p>per semester (average)</p>
+                        <ul class="admission-list">
+                            <li><i class="fas fa-check-circle"></i> Flexible payment plans</li>
+                            <li><i class="fas fa-check-circle"></i> Merit scholarships available</li>
+                            <li><i class="fas fa-check-circle"></i> Need-based financial aid</li>
+                            <li><i class="fas fa-check-circle"></i> Lab fees included</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-left" data-aos-delay="300">
+                    <div class="admission-card">
+                        <h4>Apply Now</h4>
+                        <ul class="admission-list">
+                            <li><i class="fas fa-calendar"></i> Intake: January, May, September</li>
+                            <li><i class="fas fa-clock"></i> Application deadline: 30 days before intake</li>
+                            <li><i class="fas fa-globe"></i> International students welcome</li>
+                            <li><i class="fas fa-file-alt"></i> Online application available</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary-custom btn-custom w-100 mt-3">Apply Online</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section id="faculty" class="section-padding">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Faculty</h2>
+                <p>Learn from industry experts and experienced academics</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="faculty-card">
+                        <div class="faculty-image">
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Dr. John Mwamba">
+                        </div>
+                        <div class="faculty-info">
+                            <h5>Dr. John Mwamba</h5>
+                            <div class="position">Dean, ICT</div>
+                            <div class="qualification">PhD Computer Science</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="faculty-card">
+                        <div class="faculty-image">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Prof. Sarah Banda">
+                        </div>
+                        <div class="faculty-info">
+                            <h5>Prof. Sarah Banda</h5>
+                            <div class="position">Head, Research</div>
+                            <div class="qualification">PhD Data Science</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="faculty-card">
+                        <div class="faculty-image">
+                            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Dr. David Phiri">
+                        </div>
+                        <div class="faculty-info">
+                            <h5>Dr. David Phiri</h5>
+                            <div class="position">Senior Lecturer</div>
+                            <div class="qualification">PhD Networking</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="faculty-card">
+                        <div class="faculty-image">
+                            <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Dr. Mary Zulu">
+                        </div>
+                        <div class="faculty-info">
+                            <h5>Dr. Mary Zulu</h5>
+                            <div class="position">Program Coordinator</div>
+                            <div class="qualification">PhD Software Engineering</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Life Section -->
+    <section id="campus" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Campus Life</h2>
+                <p>Experience learning in Lusaka's premier tech university</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="campus-card">
+                        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Library">
+                        <div class="campus-overlay">
+                            <h5>Digital Library</h5>
+                            <p>24/7 access to online resources and study spaces</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="campus-card">
+                        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Computer Lab">
+                        <div class="campus-overlay">
+                            <h5>Computer Labs</h5>
+                            <p>Modern workstations with latest software</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="campus-card">
+                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Student Lounge">
+                        <div class="campus-overlay">
+                            <h5>Student Lounge</h5>
+                            <p>Relax and collaborate with fellow students</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Student Testimonials</h2>
+                <p>What our students say about ICU Zambia</p>
+            </div>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"ICU Zambia gave me the skills I needed to succeed in the tech industry. The hands-on approach to learning and industry connections made all the difference."</p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Peter">
+                                <div class="author-info">
+                                    <h6>Peter Chanda</h6>
+                                    <p>Class of 2022, Software Engineer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"The faculty at ICU Zambia are not just teachers but mentors. They guided me through my journey and helped me land my dream job."</p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Grace">
+                                <div class="author-info">
+                                    <h6>Grace Mwansa</h6>
+                                    <p>Class of 2023, Network Administrator</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"Studying at ICU Zambia was a transformative experience. The curriculum is up-to-date with industry demands."</p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="James">
+                                <div class="author-info">
+                                    <h6>James Banda</h6>
+                                    <p>Class of 2021, IT Consultant</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Events -->
+    <section id="news" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>News & Events</h2>
+                <p>Stay updated with the latest at ICU Zambia</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="news-card">
+                        <div class="news-date">
+                            <div class="day">15</div>
+                            <div class="month">MAR</div>
+                        </div>
+                        <div class="news-content">
+                            <h5>Tech Career Fair 2026</h5>
+                            <p>Meet top employers from Zambia's tech industry.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--secondary);">Read more →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-card">
+                        <div class="news-date">
+                            <div class="day">22</div>
+                            <div class="month">MAR</div>
+                        </div>
+                        <div class="news-content">
+                            <h5>Hackathon 2026</h5>
+                            <p>24-hour coding competition with prizes.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--secondary);">Read more →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="news-card">
+                        <div class="news-date">
+                            <div class="day">05</div>
+                            <div class="month">APR</div>
+                        </div>
+                        <div class="news-content">
+                            <h5>Open Day</h5>
+                            <p>Tour the campus and meet faculty members.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--secondary);">Read more →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our admissions office</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-right">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h5>Visit Us</h5>
+                        <p>Lusaka, Zambia<br>Great East Road, Plot 1234</p>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h5>Call Us</h5>
+                        <p>+260 211 123 456<br>+260 977 123 456</p>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h5>Email Us</h5>
+                        <p>info@icuzambia.net<br>admissions@icuzambia.net</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="contact-form">
+                        <h4 class="mb-4">Send us a message</h4>
+                        <form id="contactForm" onsubmit="handleSubmit(event)">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select">
+                                    <option selected>Select Subject</option>
+                                    <option>Admissions Inquiry</option>
+                                    <option>Program Information</option>
+                                    <option>Visit Campus</option>
+                                    <                                    <option>General Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123456.789012345!2d28.283333!3d-15.416667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDI1JzAwLjAiUyAyOMKwMTcnMDAuMCJF!5e0!3m2!1sen!2szm!4v1234567890" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5>ICU Zambia</h5>
+                    <p>Information and Communication University<br>Shaping the Future Through Technology & Innovation</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#admissions">Admissions</a></li>
+                        <li><a href="#faculty">Faculty</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Student Portal</a></li>
+                        <li><a href="#">E-Library</a></li>
+                        <li><a href="#">Academic Calendar</a></li>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Contact Info</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Great East Road, Lusaka, Zambia</li>
+                        <li><i class="fas fa-phone me-2"></i> +260 211 123 456</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@icuzambia.net</li>
+                        <li><i class="fas fa-clock me-2"></i> Mon-Fri: 8:00 AM - 5:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ICU Zambia. All rights reserved. | Information and Communication University</p>
+                <p class="mt-2">Accredited by the Higher Education Authority (HEA), Zambia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Hide loader when page loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loader').style.display = 'none';
+                }, 1000);
+            }, 1500);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('✅ Thank you for your message! Our admissions team will contact you soon.');
+            event.target.reset();
+        }
+
+        // Counter animation function
+        function animateCounter(elementId, target, suffix = '') {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, 30);
+        }
+
+        // Start counter animation when stats section is in view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter('stat-year', 15, '+');
+                    animateCounter('stat-programs', 25, '+');
+                    animateCounter('stat-students', 2000, '+');
+                    animateCounter('stat-grad', 95, '%');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Program cards hover effect
+        document.querySelectorAll('.program-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Course cards interactive
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const courseName = this.querySelector('h5').textContent;
+                alert(`📚 You selected: ${courseName}. Course details would open in a full version.`);
+            });
+        });
+
+        // Faculty cards interactive
+        document.querySelectorAll('.faculty-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const facultyName = this.querySelector('h5').textContent;
+                alert(`👨‍🏫 Faculty profile for ${facultyName} would open in a full version.`);
+            });
+        });
+
+        // Campus cards interactive
+        document.querySelectorAll('.campus-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const location = this.querySelector('h5').textContent;
+                alert(`📍 Virtual tour of ${location} would open in a full version.`);
+            });
+        });
+
+        // News cards interactive
+        document.querySelectorAll('.news-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const newsTitle = this.querySelector('h5').textContent;
+                alert(`📰 Full article: "${newsTitle}" would open in a full version.`);
+            });
+        });
+
+        // Donation/Apply buttons
+        function applyNow(program) {
+            alert(`🎓 Thank you for your interest in ${program}. Our admissions team will contact you with application details.`);
+        }
+
+        // Newsletter subscription (if added)
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert(`📧 Thank you for subscribing with: ${email}. You'll receive our updates.`);
+            event.target.reset();
+        }
+
+        // Current year in footer
+        document.querySelector('.footer-bottom p').innerHTML = `&copy; ${new Date().getFullYear()} ICU Zambia. All rights reserved. | Information and Communication University`;
+
+        // Console welcome message
+        console.log('%c🎓 Welcome to ICU Zambia Website', 'font-size: 20px; color: #003366; font-weight: bold;');
+        console.log('%cInformation and Communication University', 'font-size: 16px; color: #FF6600;');
+        console.log('%cBuilt with HTML, CSS, JavaScript & Bootstrap', 'font-size: 14px; color: #00A651;');
+
+        // Add smooth hover effect to all buttons
+        document.querySelectorAll('.btn-custom, .btn-submit, .btn-donate').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Form input animations
+        document.querySelectorAll('.form-control, .form-select').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'all 0.3s ease';
+            });
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const fadeElements = document.querySelectorAll('[data-aos]');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            fadeObserver.observe(element);
+        });
+
+        // Dynamic year display for establishment
+        const currentYear = new Date().getFullYear();
+        const yearsSince = currentYear - 2009;
+        document.querySelector('.establishment-badge .year').innerHTML = '2009';
+        
+        // Add tooltips to navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.setAttribute('title', `Go to ${link.textContent} section`);
+        });
+
+        // Prevent default for anchor links with hash only
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+            link.addEventListener('click', (e) => e.preventDefault());
+        });
+
+        // Add loading animation to buttons
+        document.querySelectorAll('.btn-custom').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (!this.classList.contains('no-loading')) {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                    }, 1000);
+                }
+            });
+        });
+
+        // Program filter functionality (if needed)
+        function filterPrograms(category) {
+            const programs = document.querySelectorAll('.program-card');
+            programs.forEach(program => {
+                if (category === 'all' || program.dataset.category === category) {
+                    program.style.display = 'block';
+                } else {
+                    program.style.display = 'none';
+                }
+            });
+        }
+
+        // Search functionality (if needed)
+        function searchCourses() {
+            const searchTerm = document.getElementById('courseSearch').value.toLowerCase();
+            const courses = document.querySelectorAll('.course-card');
+            
+            courses.forEach(course => {
+                const title = course.querySelector('h5').textContent.toLowerCase();
+                const description = course.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    course.style.display = 'block';
+                } else {
+                    course.style.display = 'none';
+                }
+            });
+        }
+
+        // Mobile menu close after click
+        const navLinksMobile = document.querySelectorAll('.nav-link');
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+
+        navLinksMobile.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 992) {
+                    navbarToggler.click();
+                }
+            });
+        });
+
+        // Add scroll progress indicator
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #FF6600, #003366);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        `;
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close any open modals or menus
+                const navbarCollapse = document.querySelector('.navbar-collapse.show');
+                if (navbarCollapse) {
+                    navbarToggler.click();
+                }
+            }
+        });
+
+        // Touch device detection
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouchDevice) {
+            document.body.classList.add('touch-device');
+        }
+
+        // Add to home screen prompt (for mobile)
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button
+            const installBtn = document.createElement('button');
+            installBtn.innerHTML = '<i class="fas fa-download"></i> Install App';
+            installBtn.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                right: 30px;
+                background: #FF6600;
+                color: white;
+                border: none;
+                padding: 15px 30px;
+                border-radius: 50px;
+                font-weight: bold;
+                cursor: pointer;
+                z-index: 999;
+                box-shadow: 0 5px 20px rgba(255,102,0,0.3);
+                animation: pulse 2s infinite;
+            `;
+            
+            installBtn.onclick = async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log(`User response to install: ${outcome}`);
+                    deferredPrompt = null;
+                    installBtn.remove();
+                }
+            };
+            
+            document.body.appendChild(installBtn);
+        });
+
+        // Service worker registration (for PWA)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
