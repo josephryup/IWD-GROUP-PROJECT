@@ -14,23 +14,71 @@
 :root {
     /* Brand Design Tokens */
     --primary: #003366;      /* Deep Blue - Trust & Knowledge */
+    --primary-subtle: #e6ebf0;
     --secondary: #FF6600;    /* Orange - Innovation & Energy */
+    --secondary-subtle: #fff0e6;
     --accent: #00A651;       /* Green - Growth & Future */
     --light: #F8F9FA;
     --dark: #212529;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Typography Tokens */
+    --font-serif: 'Times New Roman', Times, serif;
+
+    /* Custom Layout & Spacing */
+    --gap-sm: 1.5rem;
+    --gap-md: 2rem;
+    --gap-lg: 4rem;
+
+    /* Architecture Tokens */
+    --shadow-sm: 0 4px 10px rgba(0, 51, 102, 0.05);
+    --shadow-md: 0 10px 30px rgba(0, 51, 102, 0.1);
+    --shadow-lg: 0 20px 40px rgba(0, 51, 102, 0.2);
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --glass-bg: rgba(255, 255, 255, 0.85);
+}
+
+::selection {
+    background: var(--secondary);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--light);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 5px;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-serif);
     color: var(--dark);
     overflow-x: hidden;
     background: #ffffff;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-serif);
     font-weight: 700;
+    line-height: 1.25;
+}
+
+/* Custom CSS Grid Helper Tools */
+.css-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--gap-md);
+}
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* 2. LOADING SCREEN COMPONENT */
@@ -120,11 +168,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 4. NAVIGATION STYLES */
 .navbar {
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 15px 0;
-    transition: var(--transition);
-    box-shadow: 0 2px 20px rgba(0,51,102,0.1);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid rgba(0, 51, 102, 0.05);
 }
 
 /* State when user scrolls down */
@@ -209,9 +259,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: 15px 40px;
     border-radius: 50px;
     font-weight: 600;
+    font-family: var(--font-serif);
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: var(--transition);
+    transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -219,28 +270,33 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary-custom {
     background: var(--secondary);
-    color: var(--primary);
+    color: white;
     border: 2px solid var(--secondary);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-primary-custom:hover {
     background: transparent;
-    color: white;
+    color: var(--secondary);
+    box-shadow: none;
+    transform: translateY(-2px);
 }
 
 /* 6. COMPONENT CARDS */
 .program-card, .feature-item, .faculty-card, .course-card {
     background: white;
-    border-radius: 20px;
+    border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,51,102,0.1);
-    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
     height: 100%;
+    border-top: 4px solid transparent;
 }
 
 .program-card:hover, .feature-item:hover, .faculty-card:hover, .course-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,51,102,0.2);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-top-color: var(--secondary);
 }
 
 /* Section Common Spacing */
