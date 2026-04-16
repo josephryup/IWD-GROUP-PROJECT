@@ -1,5 +1,6 @@
 <!-- 
     ICU Zambia Website - About Page
+    Primary Responsibility: About Page Architect
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -8,18 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | ICU Zambia</title>
     
-    <!-- Meta Tags for SEO -->
+    <!-- Meta Tags for SEO: Relevant keywords and description for the About page -->
     <meta name="description" content="Learn about Information and Communication University (ICU Zambia) - History, Faculty, and Campus Life.">
     
-    <!-- External Libraries -->
+    <!-- External Libraries: Shared with Home page for consistency -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Global Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- LOADER: Reused component across all pages -->
     <div id="loader">
         <div class="loader-content">
             <div class="book-loader">
@@ -32,7 +35,7 @@
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- NAVIGATION: Uses 'scrolled' class by default on inner pages for visibility -->
     <nav class="navbar navbar-expand-lg fixed-top scrolled" id="mainNav">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -57,7 +60,7 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
+    <!-- PAGE HEADER: Simplified hero section for internal pages -->
     <section class="stats-section" style="padding: 120px 0 60px;">
         <div class="container text-center">
             <h1 data-aos="fade-up">About Our University</h1>
@@ -65,7 +68,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- CORE ABOUT: Detailed history and mission -->
     <section id="about" class="section-padding">
         <div class="container">
             <div class="row align-items-center">
@@ -83,6 +86,7 @@
                     <p class="lead">Information and Communication University (ICU Zambia) is a private higher education institution located in Lusaka, Zambia.</p>
                     <p>Founded in 2009, ICU Zambia is officially recognized by the Ministry of Education of Zambia and the Higher Education Authority (HEA). We are dedicated to providing quality education in information and communication technologies, preparing students for the digital economy.</p>
                     
+                    <!-- Stats Grid for the About page -->
                     <div class="about-stats">
                         <div class="stat-box">
                             <div class="number">15+</div>
@@ -102,7 +106,7 @@
         </div>
     </section>
 
-    <!-- Faculty Section -->
+    <!-- FACULTY SECTION: Profile cards for key educational leaders -->
     <section id="faculty" class="section-padding bg-light">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -110,6 +114,7 @@
                 <p>Learn from industry experts and experienced academics</p>
             </div>
             <div class="row g-4">
+                <!-- Faculty Profile 1 -->
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
                     <div class="faculty-card">
                         <div class="faculty-image">
@@ -122,6 +127,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Faculty Profile 2 -->
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
                     <div class="faculty-card">
                         <div class="faculty-image">
@@ -134,6 +140,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Faculty Profile 3 -->
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
                     <div class="faculty-card">
                         <div class="faculty-image">
@@ -146,6 +153,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Faculty Profile 4 -->
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
                     <div class="faculty-card">
                         <div class="faculty-image">
@@ -162,7 +170,7 @@
         </div>
     </section>
 
-    <!-- Campus Life Section -->
+    <!-- CAMPUS LIFE: Gallery of university facilities -->
     <section id="campus" class="section-padding">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -170,6 +178,7 @@
                 <p>Experience learning in Lusaka's premier tech university</p>
             </div>
             <div class="row g-4">
+                <!-- Facility 1: Library -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="campus-card">
                         <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Library">
@@ -179,6 +188,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Facility 2: Labs -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="campus-card">
                         <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Computer Lab">
@@ -188,6 +198,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Facility 3: Lounge -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="campus-card">
                         <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Student Lounge">
@@ -201,7 +212,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER: Standard global footer -->
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -232,7 +243,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/script.js"></script>

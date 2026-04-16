@@ -1,5 +1,6 @@
 <!-- 
-    ICU Zambia Website - Programs Page
+    ICU Zambia Website - Academic Programs Page
+    Primary Responsibility: Academic Program Manager
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -8,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academic Programs | ICU Zambia</title>
     
-    <!-- Meta Tags for SEO -->
+    <!-- Meta Tags for SEO: Catalog of available courses -->
     <meta name="description" content="Explore undergraduate and postgraduate programs at ICU Zambia. Computer Science, IT, Cybersecurity, and more.">
     
-    <!-- External Libraries -->
+    <!-- Framework & UI libraries -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- Global Page Loader -->
     <div id="loader">
         <div class="loader-content">
             <div class="book-loader">
@@ -32,7 +33,7 @@
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- MAIN NAV: Persistent header -->
     <nav class="navbar navbar-expand-lg fixed-top scrolled" id="mainNav">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -57,7 +58,7 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
+    <!-- PROGRAM HEADER -->
     <section class="stats-section" style="padding: 120px 0 60px;">
         <div class="container text-center">
             <h1 data-aos="fade-up">Academic Programs</h1>
@@ -65,10 +66,11 @@
         </div>
     </section>
 
-    <!-- Programs Section -->
+    <!-- CORE PROGRAMS GRID: Interactive cards for each degree path -->
     <section id="programs" class="section-padding">
         <div class="container">
             <div class="row g-4">
+                <!-- Program Card: CS -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="100">
                     <div class="program-card">
                         <div class="program-icon"><i class="fas fa-laptop-code"></i></div>
@@ -77,7 +79,7 @@
                         <span class="program-level">Undergraduate</span>
                     </div>
                 </div>
-                <!-- ... other program cards ... -->
+                <!-- Program Card: IT -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="200">
                     <div class="program-card">
                         <div class="program-icon"><i class="fas fa-network-wired"></i></div>
@@ -86,6 +88,7 @@
                         <span class="program-level">Undergraduate</span>
                     </div>
                 </div>
+                <!-- Program Card: BIS -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="300">
                     <div class="program-card">
                         <div class="program-icon"><i class="fas fa-chart-line"></i></div>
@@ -94,6 +97,7 @@
                         <span class="program-level">Undergraduate</span>
                     </div>
                 </div>
+                <!-- Program Card: Cyber -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="400">
                     <div class="program-card">
                         <div class="program-icon"><i class="fas fa-shield-alt"></i></div>
@@ -102,6 +106,7 @@
                         <span class="program-level">Postgraduate</span>
                     </div>
                 </div>
+                <!-- Program Card: Data Science -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="500">
                     <div class="program-card">
                         <div class="program-icon"><i class="fas fa-database"></i></div>
@@ -110,6 +115,7 @@
                         <span class="program-level">Postgraduate</span>
                     </div>
                 </div>
+                <!-- Program Card: Software Eng -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="600">
                     <div class="program-card">
                         <div class="program-icon"><i class="fas fa-mobile-alt"></i></div>
@@ -122,7 +128,7 @@
         </div>
     </section>
 
-    <!-- Courses Showcase -->
+    <!-- SHORT COURSES / POPULAR: Highlighted specialty classes -->
     <section class="section-padding bg-light">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -130,6 +136,7 @@
                 <p>Explore our most sought-after programs</p>
             </div>
             <div class="row g-4">
+                <!-- Course Card: WebDev -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="course-card">
                         <div class="course-image">
@@ -146,6 +153,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Course Card: Networks -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="course-card">
                         <div class="course-image">
@@ -162,6 +170,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Course Card: Analytics -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="course-card">
                         <div class="course-image">
@@ -182,8 +191,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">...Same Footer Structure...</footer>
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -203,7 +211,7 @@
                 <div class="col-12 col-lg-4 ms-auto">
                     <h5>Contact Info</h5>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt me-2"></i> Lusaka, Zambia</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Great East Road, Lusaka, Zambia</li>
                         <li><i class="fas fa-envelope me-2"></i> info@icuzambia.net</li>
                     </ul>
                 </div>
@@ -211,7 +219,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- SHARED SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/script.js"></script>

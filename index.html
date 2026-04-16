@@ -1,7 +1,7 @@
 <!-- 
-    ICU Zambia Website
-    Main HTML Structure
-    Features: Bootstrap 5, Font Awesome, AOS Animations, Custom Responsive Design
+    ICU Zambia Website - Global Index Page
+    Primary Responsibility: Lead Developer (Home Page)
+    Current Version: 2.0 (Refactored)
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -10,26 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICU Zambia | Information and Communication University</title>
     
-    <!-- Meta Tags for SEO -->
+    <!-- Meta Tags for SEO: Improved search engine visibility -->
     <meta name="description" content="Information and Communication University (ICU Zambia) - Preparing students for the digital economy through innovation and technology.">
     
-    <!-- External Libraries: Bootstrap, FontAwesome, AOS -->
+    <!-- Framework & Assets -->
+    <!-- Bootstrap 5: UI Framework for responsive layout -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- font Awesome -->
+    <!-- Font Awesome: Vector icons for UI elements -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter (Body) & Montserrat (Headings) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- animation Library -->
+    <!-- AOS (Animate On Scroll): Visual reveal effects -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- external CSS -->
+    <!-- Custom Design Tokens & Styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- LOADING OVERLAY: Initial entrance animation -->
     <div id="loader">
         <div class="loader-content">
             <div class="book-loader">
@@ -43,16 +44,21 @@
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- MAIN NAVIGATION: Sticky header with dynamic 'scrolled' class -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
+            <!-- Branding: Logo and University Name -->
             <a class="navbar-brand d-flex align-items-center" href="#home">
                 <img src="images/Icu_emblem.png" alt="ICU Zambia Emblem" height="40" class="me-2">
                 ICU Zambia
             </a>
+            
+            <!-- Mobile Menu Trigger -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
+            <!-- Navbar Links: Integrated with internal section IDs and external pages -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -84,8 +90,9 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- HERO SECTION: Primary landing display with parallax-style background -->
     <section id="home" class="hero">
+        <!-- Floating Icons: Background decor with pure CSS floating animations -->
         <div class="floating-icon icon-1"><i class="fas fa-laptop-code"></i></div>
         <div class="floating-icon icon-2"><i class="fas fa-network-wired"></i></div>
         <div class="floating-icon icon-3"><i class="fas fa-microchip"></i></div>
@@ -94,6 +101,8 @@
             <h1 data-aos="fade-up">ICU Zambia</h1>
             <div class="subtitle" data-aos="fade-up" data-aos-delay="100">Information and Communication University</div>
             <p data-aos="fade-up" data-aos-delay="200">Shaping the Future Through Technology & Innovation Since 2009</p>
+            
+            <!-- Call to Action (CTA) Buttons -->
             <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
                 <a href="programs.html" class="btn btn-primary-custom btn-custom me-3">Our Programs</a>
                 <a href="admissions.html" class="btn btn-outline-custom btn-custom">Apply Now</a>
@@ -101,7 +110,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ABOUT PREVIEW: High-level overview to drive engagement -->
     <section id="about" class="section-padding">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -109,6 +118,7 @@
                 <p>Excellence in Information and Communication Education</p>
             </div>
             <div class="row align-items-center">
+                <!-- Visual Content: Features the campus image and establishment badge -->
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="about-image">
                         <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=2086&q=80" alt="ICU Zambia Campus" class="img-fluid">
@@ -118,11 +128,13 @@
                         </div>
                     </div>
                 </div>
+                <!-- Text Content: Mission and Statistics -->
                 <div class="col-lg-6" data-aos="fade-left">
                     <h3 class="mb-4" style="color: var(--primary);">Leading the Digital Revolution in Zambia</h3>
-                    <p class="lead">Information and Communication University (ICU Zambia) is a private higher education institution located in Lusaka, Zambia [citation:1].</p>
-                    <p>Founded in 2009, ICU Zambia is officially recognized by the Ministry of Education of Zambia and the Higher Education Authority (HEA) [citation:1]. We are dedicated to providing quality education in information and communication technologies, preparing students for the digital economy.</p>
+                    <p class="lead">Information and Communication University (ICU Zambia) is a private higher education institution located in Lusaka, Zambia.</p>
+                    <p>Founded in 2009, ICU Zambia is officially recognized by the Ministry of Education of Zambia and the Higher Education Authority (HEA).</p>
                     
+                    <!-- Quick Stats: Counter animations controlled by script.js -->
                     <div class="about-stats">
                         <div class="stat-box">
                             <div class="number">15+</div>
@@ -146,7 +158,7 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- KEY FEATURES: Grid of university competitive advantages -->
     <section class="features-section section-padding">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -154,15 +166,17 @@
                 <p>Excellence in Education, Innovation in Technology</p>
             </div>
             <div class="row g-4">
+                <!-- Feature Card: Accreditation -->
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
                     <div class="feature-item">
                         <div class="feature-icon">
                             <i class="fas fa-certificate"></i>
                         </div>
                         <h5>Accredited</h5>
-                        <p>Officially recognized by the Ministry of Education, Zambia and HEA [citation:1]</p>
+                        <p>Officially recognized by the Ministry of Education, Zambia and HEA</p>
                     </div>
                 </div>
+                <!-- Feature Card: Labs -->
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
                     <div class="feature-item">
                         <div class="feature-icon">
@@ -172,6 +186,7 @@
                         <p>State-of-the-art computer and networking laboratories</p>
                     </div>
                 </div>
+                <!-- Feature Card: Faculty -->
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
                     <div class="feature-item">
                         <div class="feature-icon">
@@ -181,6 +196,7 @@
                         <p>Industry professionals and experienced academics</p>
                     </div>
                 </div>
+                <!-- Feature Card: Industry -->
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
                     <div class="feature-item">
                         <div class="feature-icon">
@@ -194,7 +210,7 @@
         </div>
     </section>
 
-    <!-- Statistics Section -->
+    <!-- GLOBAL STATS: High-impact number row -->
     <section class="stats-section">
         <div class="container">
             <div class="row">
@@ -226,7 +242,7 @@
         </div>
     </section>
 
-    <!-- Quick Programs Preview -->
+    <!-- PROGRAMS TEASER: Quick look at core academic pillars -->
     <section id="programs" class="section-padding">
         <div class="container text-center">
             <div class="section-title" data-aos="fade-up">
@@ -262,8 +278,7 @@
         </div>
     </section>
 
-
-    <!-- Admissions Call to Action -->
+    <!-- ADMISSIONS BANNER: Conversion section for prospective students -->
     <section id="admissions" class="admissions-section section-padding">
         <div class="container text-center">
             <h2 data-aos="fade-up">Ready to Start Your Future?</h2>
@@ -272,15 +287,14 @@
         </div>
     </section>
 
-
-
-    <!-- Testimonials -->
+    <!-- TESTIMONIALS: Social proof and student success stories -->
     <section class="section-padding">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>Student Testimonials</h2>
                 <p>What our students say about ICU Zambia</p>
             </div>
+            <!-- Testimonial Carousel: Managed by Bootstrap JS -->
             <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -320,6 +334,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Indicators: Navigation dots for the carousel -->
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"></button>
                     <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></button>
@@ -329,7 +344,7 @@
         </div>
     </section>
 
-    <!-- News & Events -->
+    <!-- NEWS & EVENTS: Recent updates grid -->
     <section id="news" class="section-padding bg-light">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -337,6 +352,7 @@
                 <p>Stay updated with the latest at ICU Zambia</p>
             </div>
             <div class="row g-4">
+                <!-- News Item: Event 1 -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="news-card">
                         <div class="news-date">
@@ -350,6 +366,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- News Item: Event 2 -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="news-card">
                         <div class="news-date">
@@ -363,6 +380,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- News Item: Event 3 -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="news-card">
                         <div class="news-date">
@@ -380,11 +398,11 @@
         </div>
     </section>
 
-
-    <!-- Footer -->
+    <!-- FOOTER: Global site information and resource links -->
     <footer class="footer">
         <div class="container">
             <div class="row">
+                <!-- Branding column -->
                 <div class="col-12 col-lg-4">
                     <h5>ICU Zambia</h5>
                     <p>Information and Communication University<br>Shaping the Future Through Technology & Innovation</p>
@@ -396,6 +414,7 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
+                <!-- Quick Navigation -->
                 <div class="col-lg-2">
                     <h5>Quick Links</h5>
                     <ul class="footer-links">
@@ -406,6 +425,7 @@
                         <li><a href="about.html#faculty">Faculty</a></li>
                     </ul>
                 </div>
+                <!-- Student Resources -->
                 <div class="col-lg-2">
                     <h5>Resources</h5>
                     <ul class="footer-links">
@@ -416,6 +436,7 @@
                         <li><a href="#">FAQs</a></li>
                     </ul>
                 </div>
+                <!-- Contact Details -->
                 <div class="col-12 col-lg-4">
                     <h5>Contact Info</h5>
                     <ul class="footer-links">
@@ -426,6 +447,7 @@
                     </ul>
                 </div>
             </div>
+            <!-- Legal and Copyright -->
             <div class="footer-bottom">
                 <p>&copy; 2026 ICU Zambia. All rights reserved. | Information and Communication University</p>
                 <p class="mt-2">Accredited by the Higher Education Authority (HEA), Zambia</p>
@@ -433,16 +455,14 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
+    <!-- INTERACTIVE: Back-to-Top trigger -->
     <button id="backToTop" onclick="scrollToTop()">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Scripts -->
+    <!-- SCRIPT INJECTION: External libraries and custom logic -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Refactored: Extracted inline script to external JS -->
     <script src="js/script.js"></script>
 </body>
 </html>
